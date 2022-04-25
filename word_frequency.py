@@ -9,14 +9,15 @@ STOP_WORDS = [
 
 
 def print_word_freq(file):
-    # """Read in `file` and print out the frequency of words in that file."""
-    # """- remove punctuation"""
-    # """- normalize all words to lowercase"""
-    # """- remove "stop words" -- words used so frequently they are ignored"""
-    # """- go through the file word by word and keep a count of how often each word is used"""
+    # remove punctuation"""
+    # normalize all words to lowercase"""
+    # remove "stop words" -- words used so frequently
+    # they are ignored
+    # go through the file word by word and keep a count # of how often each word is used
 
     with open(file, 'r') as file_contents:
         contents_string = file_contents.read()
+        print(f"Here is everything: {contents_string}")
         contents_lower = contents_string.lower()
         for character in string.punctuation:
             contents_lower = contents_lower.replace(character, '')
@@ -24,9 +25,14 @@ def print_word_freq(file):
         for word in contents_split:
             if word in STOP_WORDS:
                 contents_split.remove(word)
-        contents_frequency  = contents_split.count(word)
-    print(contents_split, contents_frequency)
 
+        def count_occurrence(contents_split, each_word):
+            count = 0
+            for word in contents_split:
+                if word == each_word:
+                    count = count + 1
+            print(count)
+    print({count_occurrence(contents_split)})
 
 
 if __name__ == "__main__":
