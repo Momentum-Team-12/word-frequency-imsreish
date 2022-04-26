@@ -1,4 +1,5 @@
 import string
+from collections import Counter
 
 
 STOP_WORDS = [
@@ -19,20 +20,26 @@ def print_word_freq(file):
         contents_string = file_contents.read()
         print(f"Here is everything: {contents_string}")
         contents_lower = contents_string.lower()
+        print(f"Here it is in lowercase: {contents_lower}")
         for character in string.punctuation:
             contents_lower = contents_lower.replace(character, '')
+        print(f"With removed punctuation: {contents_lower}")
         contents_split = contents_lower.split()
         for word in contents_split:
             if word in STOP_WORDS:
                 contents_split.remove(word)
+            print(f"With STOP words removed: {contents_split}")
+        # x = contents_split
+        # d = Counter(1)
+        # print('{} has occurred {} times'.format(x, d[x]))
 
-        def count_occurrence(contents_split, each_word):
-            count = 0
-            for word in contents_split:
-                if word == each_word:
-                    count = count + 1
-            print(count)
-    print({count_occurrence(contents_split)})
+        # def count_occurrence(contents_split, each_word):
+        #     count = 0
+        #     for word in contents_split:
+        #         if word == each_word:
+        #             count = count + 1
+        #     print(count)
+        # print({count_occurrence(contents_split)})
 
 
 if __name__ == "__main__":
